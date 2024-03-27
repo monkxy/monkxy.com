@@ -6,14 +6,16 @@ interface ProjectsPageProps {
 }
 
 export default function ProjectsPage({ pageSwitcher, showing }: ProjectsPageProps) {
-    /* const projects = [
+    /*
+    const projects = [
         {
             name: "monkxy",
             description: "my personal website",
             link: "https://monkxy.com",
             image: "favicon.webp"
         }
-    ]; */
+    ];
+    */
 
     return (
         <div className={styles.flexRow} style={{ display: showing ? "flex" : "none" }}>
