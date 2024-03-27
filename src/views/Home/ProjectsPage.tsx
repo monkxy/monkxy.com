@@ -18,7 +18,7 @@ export default function ProjectsPage({ pageSwitcher, showing }: ProjectsPageProp
     return (
         <div className={styles.flexRow} style={{ display: showing ? "flex" : "none" }}>
             <div className={styles.content}>
-                <h1 className={styles.projects}>projects</h1>
+                <h1 className={styles.projects}>projects (WIP)</h1>
 
                 <div className={styles.flexRow}>
 
