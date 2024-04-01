@@ -17,3 +17,9 @@ body {
     background-color: black;
     color: white;
 }
+
+@media (max-width: 600px) {
+    body {
+        transform: scale(0.5);
+    }
+}

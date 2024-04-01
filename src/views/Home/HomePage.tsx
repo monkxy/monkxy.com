@@ -26,8 +26,8 @@ export default function HomePage({ pageSwitcher, showing }: HomePageProps) {
                         <i className={styles.about}>fullstack developer</i>
 
                         <div className={styles.icons}>
-                            {Object.entries(icons).map(([icon, link]) => (
-                                <a href={link} target="_blank">
+                            {Object.entries(icons).map(([icon, link]: [string, string]) => (
+                                <a href={link} target="_blank" key={link}>
                                     <img src={icon} className={styles.icon} />
                                 </a>
                             ))}
