@@ -46,7 +46,7 @@ export default function Home() {
     };
 
     useEffect(() => {
-        axios.get("https://manti.vendicated.dev/api/reviewdb/users/230580946557075457/reviews?flags=0&offset=2").then(res => setReviews(res.data.reviews));
+        axios.get("https://manti.vendicated.dev/api/reviewdb/users/230580946557075457/reviews?flags=0=").then(res => setReviews(res.data.reviews.slice(1)));
     }, []);
 
     return (
