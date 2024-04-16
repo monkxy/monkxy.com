@@ -1,26 +1,14 @@
 import axios from "axios";
 import gsap from "gsap";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
-import HomePage from "./HomePage";
-import ProjectsPage from "./ProjectsPage";
-import ReviewsPage from "./ReviewsPage";
+import { HomePage } from "./HomePage";
+import { ProjectsPage } from "./ProjectsPage";
+import { ReviewsPage } from "./ReviewsPage";
 import styles from "./styles.module.css";
+import { Review } from "./types";
 
-interface Review {
-    id: string;
-    sender: {
-        id: string;
-        discordID: string;
-        username: string;
-        profilePhoto: string;
-        badges: string[];
-    };
-    comment: string;
-    timestamp: number;
-}
-
-export default function Home() {
+export const Home = () => {
     const [page, setPage] = useState<string>("home");
     const [reviews, setReviews] = useState<Review[]>([]);
 
@@ -33,27 +21,41 @@ export default function Home() {
                 setPage(page);
 
                 gsap.set(`.${styles.flexRow}`, {
-                    x: window.innerWidth
+                    x: window.innerWidth,
                 });
 
                 gsap.to(`.${styles.flexRow}`, {
                     x: 0,
                     duration: 0.5,
-                    ease: "power2.inOut"
+                    ease: "power2.inOut",
                 });
-            }
+            },
         });
     };
 
     useEffect(() => {
-        axios.get("https://manti.vendicated.dev/api/reviewdb/users/230580946557075457/reviews?flags=0=").then(res => setReviews(res.data.reviews.slice(1)));
+        axios
+            .get(
+                "https://manti.vendicated.dev/api/reviewdb/users/230580946557075457/reviews?flags=0="
+            )
+            .then(res => setReviews(res.data.reviews.slice(1)));
     }, []);
 
     return (
         <>
-            <HomePage pageSwitcher={scrollToNewPage} showing={page === "home"} />
-            <ProjectsPage pageSwitcher={scrollToNewPage} showing={page === "projects"} />
-            <ReviewsPage pageSwitcher={scrollToNewPage} showing={page === "reviews"} reviews={reviews} />
+            <HomePage
+                pageSwitcher={scrollToNewPage}
+                showing={page === "home"}
+            />
+            <ProjectsPage
+                pageSwitcher={scrollToNewPage}
+                showing={page === "projects"}
+            />
+            <ReviewsPage
+                pageSwitcher={scrollToNewPage}
+                showing={page === "reviews"}
+                reviews={reviews}
+            />
         </>
     );
-}
+};

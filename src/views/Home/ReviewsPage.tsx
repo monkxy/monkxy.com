@@ -1,27 +1,16 @@
 import styles from "./styles.module.css";
+import { Review, ReviewsPageProps } from "./types";
 
-interface Review {
-    id: string;
-    sender: {
-        id: string;
-        discordID: string;
-        username: string;
-        profilePhoto: string;
-        badges: string[];
-    };
-    comment: string;
-    timestamp: number;
-}
-
-interface ReviewsPageProps {
-    pageSwitcher: (page: string) => void;
-    showing: boolean;
-    reviews: Review[];
-}
-
-export default function ReviewsPage({ pageSwitcher, showing, reviews }: ReviewsPageProps) {
+export const ReviewsPage = ({
+    pageSwitcher,
+    showing,
+    reviews,
+}: ReviewsPageProps) => {
     return (
-        <div className={styles.flexRow} style={{ display: showing ? "flex" : "none" }}>
+        <div
+            className={styles.flexRow}
+            style={{ display: showing ? "flex" : "none" }}
+        >
             <div className={styles.content}>
                 <h1 className={styles.header}>reviews</h1>
 
@@ -29,14 +18,28 @@ export default function ReviewsPage({ pageSwitcher, showing, reviews }: ReviewsP
                     {reviews.map((review: Review, i: number) => (
                         <div className={styles.review} key={i}>
                             <div className={styles.flexRow}>
-                                <img src={review.sender.profilePhoto} className={styles.profilePhoto} />
+                                <img
+                                    src={review.sender.profilePhoto}
+                                    className={styles.profilePhoto}
+                                />
 
-                                <div className={styles.flexColumn} style={{ marginLeft: "10px" }}>
+                                <div
+                                    className={styles.flexColumn}
+                                    style={{ marginLeft: "10px" }}
+                                >
                                     <div className={styles.flexRow}>
-                                        <h2 className={styles.username}>{review.sender.username}</h2>
-                                        <p className={styles.timestamp}>{new Date(review.timestamp * 1000).toLocaleDateString()}</p>
+                                        <h2 className={styles.username}>
+                                            {review.sender.username}
+                                        </h2>
+                                        <p className={styles.timestamp}>
+                                            {new Date(
+                                                review.timestamp * 1000
+                                            ).toLocaleDateString()}
+                                        </p>
                                     </div>
-                                    <p className={styles.comment}>{review.comment}</p>
+                                    <p className={styles.comment}>
+                                        {review.comment}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -49,4 +52,4 @@ export default function ReviewsPage({ pageSwitcher, showing, reviews }: ReviewsP
             </div>
         </div>
     );
-}
+};
