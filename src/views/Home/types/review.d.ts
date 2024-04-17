@@ -16,3 +16,8 @@ export interface ReviewsPageProps {
     showing: boolean;
     reviews: Review[];
 }
+
+export interface ReviewProps {
+    review: Review;
+    key: number;
+}

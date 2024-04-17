@@ -1,28 +1,28 @@
 import styles from "./styles.module.css";
-import { Project,ProjectsPageProps } from "./types";
+import { Project, ProjectsPageProps } from "./types";
+
+const projects: Project[] = [
+    {
+        name: "monkxy",
+        description: "my personal website",
+        link: "https://monkxy.com",
+        image: "favicon.webp",
+    },
+    {
+        name: "Purpet",
+        description: "a blooket private server, written in TypeScript",
+        link: "https://purpet.xyz",
+        image: "purpet.webp",
+    },
+    {
+        name: "Blacket",
+        description: "a blooket private server, written in NodeJS",
+        link: "https://blacket.org",
+        image: "blacket.webp",
+    },
+];
 
 export const ProjectsPage = ({ pageSwitcher, showing }: ProjectsPageProps) => {
-    const projects: Project[] = [
-        {
-            name: "monkxy",
-            description: "my personal website",
-            link: "https://monkxy.com",
-            image: "favicon.webp",
-        },
-        {
-            name: "Purpet",
-            description: "a blooket private server, written in TypeScript",
-            link: "https://purpet.xyz",
-            image: "purpet.webp",
-        },
-        {
-            name: "Blacket",
-            description: "a blooket private server, written in NodeJS",
-            link: "https://blacket.org",
-            image: "blacket.webp",
-        },
-    ];
-
     return (
         <div
             className={styles.flexRow}

@@ -1,13 +1,15 @@
 import styles from "./styles.module.css";
 import { HomePageProps } from "./types";
 
-export const HomePage = ({ pageSwitcher, showing }: HomePageProps) => {
-    const icons = {
-        "vsc.webp": "https://code.visualstudio.com/",
-        "ts.webp": "https://www.typescriptlang.org/",
-        "njs.webp": "https://nodejs.org/",
-    };
+const icons: {
+    [key: string]: string;
+} = {
+    "vsc.webp": "https://code.visualstudio.com/",
+    "ts.webp": "https://www.typescriptlang.org/",
+    "njs.webp": "https://nodejs.org/",
+};
 
+export const HomePage = ({ pageSwitcher, showing }: HomePageProps) => {
     return (
         <div
             className={styles.flexRow}
